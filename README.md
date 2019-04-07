@@ -12,6 +12,14 @@ http://localhost:9001/info
  
  测试RibbonConsumer：
      http://localhost:9002/user/1
+ http://localhost:9002/user/
+ 
+ http://localhost:9002/user/add
+ 
+ http://localhost:9002/user/update
+ 
+ http://localhost:9002/user/delete/1
+ 
  
  通过 <type>pom</type> 和 <scope>import</scope>实现了maven的多继承。 这种用法只能在dependencyManagement里面
  

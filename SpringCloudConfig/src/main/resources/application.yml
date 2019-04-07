@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          clone-on-start: true
+          uri: https://github.com/bseayin/ConfigServerFile
+          username: yinyouhai@aliyun.com
+          password: HengYY2012
+server:
+  port: 12580
+security:
+  user:
+    name: serverloginname
+    password: 123456
