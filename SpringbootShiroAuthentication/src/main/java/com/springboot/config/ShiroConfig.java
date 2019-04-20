@@ -31,6 +31,8 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/druid/**", "anon");
 		filterChainDefinitionMap.put("/logout", "logout");
 		filterChainDefinitionMap.put("/", "anon");
+		filterChainDefinitionMap.put("/register.html", "anon");
+		filterChainDefinitionMap.put("/reg", "anon");
 		filterChainDefinitionMap.put("/**", "authc");
 		
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

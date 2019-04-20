@@ -13,5 +13,10 @@
 <select id="findByUserName" resultMap="User">
 	select * from t_user where username = #{userName}
 </select>
-
+<insert id="add" parameterType="com.springboot.pojo.User">
+   insert into t_user (username,passwd) values (
+   #{userName,jdbcType=VARCHAR},
+   #{password,jdbcType=VARCHAR}
+   )
+</insert>
 </mapper>
