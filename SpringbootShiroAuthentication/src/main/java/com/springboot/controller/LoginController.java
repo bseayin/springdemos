@@ -23,7 +23,7 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String login() {
-		return "login";
+		return "login2.html";
 	}
 
 	@PostMapping("/login")
@@ -55,6 +55,6 @@ public class LoginController {
 	public String index(Model model) {
 		User user = (User) SecurityUtils.getSubject().getPrincipal();
 		model.addAttribute("user", user);
-		return "index";
+		return "index2.html";
 	}
 }
