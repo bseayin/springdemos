@@ -1,0 +1,144 @@
+Index: SpringbootShiroAuthentication/src/main/java/com/springboot/controller/RegisterController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- SpringbootShiroAuthentication/src/main/java/com/springboot/controller/RegisterController.java	(revision 306a24e7bfd014e73686b35b1029d7113243ad1f)
++++ SpringbootShiroAuthentication/src/main/java/com/springboot/controller/RegisterController.java	(date 1555845703048)
+@@ -21,7 +21,7 @@
+         password = MD5Utils.encrypt(username, password);
+         user.setPassword(password);
+         user.setUserName(username);
+-
++        user.setStatus("1");
+         Map map=new HashMap();
+         System.out.println("register--"+user.getUserName());
+         userMapper.add(user);
+Index: EurekaServer/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- EurekaServer/src/main/resources/application.yml	(revision 306a24e7bfd014e73686b35b1029d7113243ad1f)
++++ EurekaServer/src/main/resources/application.yml	(date 1555245685588)
+@@ -1,5 +1,5 @@
+ server:
+-  port: 8080
++  port: 9888
+ 
+ eureka:
+   instance:
+Index: EurekaClient/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- EurekaClient/src/main/resources/application.yml	(revision 306a24e7bfd014e73686b35b1029d7113243ad1f)
++++ EurekaClient/src/main/resources/application.yml	(date 1555246759764)
+@@ -10,4 +10,4 @@
+     register-with-eureka: true
+     fetch-registry: true
+     serviceUrl:
+-      defaultZone: http://localhost:8080/eureka/
++      defaultZone: http://47.92.137.225:9888/eureka/
+Index: SpringbootShiroAuthentication/src/main/java/com/springboot/util/MD5Utils.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- SpringbootShiroAuthentication/src/main/java/com/springboot/util/MD5Utils.java	(revision 306a24e7bfd014e73686b35b1029d7113243ad1f)
++++ SpringbootShiroAuthentication/src/main/java/com/springboot/util/MD5Utils.java	(date 1555851480484)
+@@ -22,7 +22,7 @@
+ 	}
+ 	public static void main(String[] args) {
+ 		
+-		System.out.println(MD5Utils.encrypt("test", "123456"));
++		System.out.println(MD5Utils.encrypt("test2", "123456"));
+ 	}
+ 
+ }
+Index: EurekaServer/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- EurekaServer/pom.xml	(revision 306a24e7bfd014e73686b35b1029d7113243ad1f)
++++ EurekaServer/pom.xml	(date 1555245808655)
+@@ -52,6 +52,7 @@
+     </repositories>
+ 
+     <build>
++        <finalName>eurekaServer</finalName>
+         <plugins>
+             <plugin>
+                 <groupId>org.springframework.boot</groupId>
+Index: SpringbootShiroAuthentication/src/main/java/com/springboot/dao/UserMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- SpringbootShiroAuthentication/src/main/java/com/springboot/dao/UserMapper.java	(revision 306a24e7bfd014e73686b35b1029d7113243ad1f)
++++ SpringbootShiroAuthentication/src/main/java/com/springboot/dao/UserMapper.java	(date 1555846224185)
+@@ -3,9 +3,14 @@
+ import org.apache.ibatis.annotations.Mapper;
+ 
+ import com.springboot.pojo.User;
++import org.apache.ibatis.annotations.Select;
++
++import java.util.List;
+ 
+ @Mapper
+ public interface UserMapper {
+ 	public User findByUserName(String userName);
+ 	public  void add(User user);
++	@Select("select * from t_user")
++    public List<User> getAll();
+ }
+Index: SpringbootShiroAuthentication/src/main/java/com/springboot/controller/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- SpringbootShiroAuthentication/src/main/java/com/springboot/controller/UserController.java	(date 1555846224131)
++++ SpringbootShiroAuthentication/src/main/java/com/springboot/controller/UserController.java	(date 1555846224131)
+@@ -0,0 +1,19 @@
++package com.springboot.controller;
++
++import com.springboot.dao.UserMapper;
++import com.springboot.pojo.User;
++import org.springframework.web.bind.annotation.GetMapping;
++import org.springframework.web.bind.annotation.RestController;
++
++import javax.annotation.Resource;
++import java.util.List;
++
++@RestController
++public class UserController {
++    @Resource
++    UserMapper userMapper;
++    @GetMapping("showall")
++    public List<User> getAll(){
++        return  userMapper.getAll();
++    }
++}
+Index: SpringbootShiroAuthentication/src/main/resources/mapper/UserMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- SpringbootShiroAuthentication/src/main/resources/mapper/UserMapper.xml	(revision 306a24e7bfd014e73686b35b1029d7113243ad1f)
++++ SpringbootShiroAuthentication/src/main/resources/mapper/UserMapper.xml	(date 1555845703090)
+@@ -14,9 +14,10 @@
+ 	select * from t_user where username = #{userName}
+ </select>
+ <insert id="add" parameterType="com.springboot.pojo.User">
+-   insert into t_user (username,passwd) values (
++   insert into t_user (username,passwd,status) values (
+    #{userName,jdbcType=VARCHAR},
+-   #{password,jdbcType=VARCHAR}
++   #{password,jdbcType=VARCHAR},
++   #{status,jdbcType=VARCHAR}
+    )
+ </insert>
+ </mapper>
+\ No newline at end of file

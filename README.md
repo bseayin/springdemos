@@ -23,6 +23,12 @@ ribbon-->负载均衡
 
 nginx--反向代理
 
+
+jar命名启动项目,linux后台运行
+nohup java -jar XXX.jar &
+
+nohup java -jar EurekaServer-1.0-SNAPSHOT.jar &
+
 打开EurekaServer地址
 http://localhost:8080/
 

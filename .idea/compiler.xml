@@ -7,13 +7,28 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="EurekaClient" />
+        <module name="EurekaServer" />
+        <module name="EurekaServiceProvider" />
         <module name="ServerConsumer" />
+        <module name="SpringBootFile" />
+        <module name="SpringbootShiroAuthentication" />
+        <module name="SpringBootShiroAuthrization" />
+        <module name="SpringBootShiroRememberMe" />
+        <module name="ssh" />
+        <module name="ssm" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="EurekaClient" target="1.8" />
       <module name="EurekaServer" target="1.8" />
+      <module name="EurekaServiceProvider" target="1.8" />
       <module name="ServerConsumer" target="1.8" />
+      <module name="SpringBootFile" target="1.8" />
+      <module name="SpringbootShiroAuthentication" target="1.7" />
+      <module name="SpringBootShiroAuthrization" target="1.7" />
+      <module name="SpringBootShiroRememberMe" target="1.7" />
+      <module name="ssh" target="1.8" />
+      <module name="ssm" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

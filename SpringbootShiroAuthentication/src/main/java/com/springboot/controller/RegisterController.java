@@ -21,7 +21,7 @@ public class RegisterController {
         password = MD5Utils.encrypt(username, password);
         user.setPassword(password);
         user.setUserName(username);
-
+        user.setStatus("1");
         Map map=new HashMap();
         System.out.println("register--"+user.getUserName());
         userMapper.add(user);

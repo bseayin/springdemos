@@ -1,0 +1,9 @@
+
+公网IP： 47.92.137.225
+Bsea=2018
+
+575261
+
+
+grant all privileges on *.* to java8@'%' identified by 'zzjava8' with grant option;
+// 查一下(yang新创建的账号)

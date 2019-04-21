@@ -4,7 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EurekaClient/EurekaClient.iml" filepath="$PROJECT_DIR$/EurekaClient/EurekaClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/EurekaServer/EurekaServer.iml" filepath="$PROJECT_DIR$/EurekaServer/EurekaServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaServiceProvider/EurekaServiceProvider.iml" filepath="$PROJECT_DIR$/EurekaServiceProvider/EurekaServiceProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/ServerConsumer/ServerConsumer.iml" filepath="$PROJECT_DIR$/ServerConsumer/ServerConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringBootFile/SpringBootFile.iml" filepath="$PROJECT_DIR$/SpringBootFile/SpringBootFile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringBootShiroAuthrization/SpringBootShiroAuthrization.iml" filepath="$PROJECT_DIR$/SpringBootShiroAuthrization/SpringBootShiroAuthrization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringBootShiroRememberMe/SpringBootShiroRememberMe.iml" filepath="$PROJECT_DIR$/SpringBootShiroRememberMe/SpringBootShiroRememberMe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringbootShiroAuthentication/SpringbootShiroAuthentication.iml" filepath="$PROJECT_DIR$/SpringbootShiroAuthentication/SpringbootShiroAuthentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssh/ssh.iml" filepath="$PROJECT_DIR$/ssh/ssh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm/ssm.iml" filepath="$PROJECT_DIR$/ssm/ssm.iml" />
     </modules>
   </component>
 </project>

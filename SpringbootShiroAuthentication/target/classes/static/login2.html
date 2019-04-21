@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 水平表单</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">名字</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="uname"
+                   placeholder="请输入名字">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="pwd"
+                   placeholder="密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> 请记住我
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button"  id="sbmt" class="btn btn-default">登录</button>
+        </div>
+    </div>
+</form>
+<script>
+$(document).ready(function(){
+    $("#sbmt").click(function(){
+        var uname=$("#uname").val();
+        var pwd=$("#pwd").val();
+        alert(uname);
+        alert(pwd);
+        $.ajax({
+            type: "post",
+            url:   "/web/login",
+            data: {"username": uname,"password": pwd},
+            dataType: "json",
+            success: function (r) {
+                if (r.code == 0) {
+                    location.href ="/web/index";
+                } else {
+                    alert(r.msg);
+                }
+            }
+        });
+    });
+
+});
+
+
+
+</script>
+</body>
+</html>

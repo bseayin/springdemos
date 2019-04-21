@@ -6,6 +6,13 @@
         <option value="$PROJECT_DIR$/EurekaServer/pom.xml" />
         <option value="$PROJECT_DIR$/EurekaClient/pom.xml" />
         <option value="$PROJECT_DIR$/ServerConsumer/pom.xml" />
+        <option value="$PROJECT_DIR$/EurekaServiceProvider/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBootFile/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringbootShiroAuthentication/pom.xml" />
+        <option value="$PROJECT_DIR$/ssh/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBootShiroRememberMe/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBootShiroAuthrization/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

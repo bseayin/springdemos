@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.dao.UserStarMapper">
+  <resultMap id="BaseResultMap" type="com.zz.entity.UserStar">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="star_id" jdbcType="BIGINT" property="starId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap2" type="com.zz.vo.SelectResultVo">
+
+    <result column="selectcount" jdbcType="BIGINT" property="selectcount" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="starId" jdbcType="BIGINT" property="starId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, star_id, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_star
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectVo"  resultMap="BaseResultMap2">
+   select count(*) as selectcount,u.user_id,s.`type`,s.id as starId  from user_star u left join star s on(u.star_id=s.id ) group by user_id,s.`type`,s.id
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_star
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zz.entity.UserStar">
+    insert into user_star (id, star_id, user_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{starId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.entity.UserStar">
+    insert into user_star
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="starId != null">
+        star_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="starId != null">
+        #{starId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.entity.UserStar">
+    update user_star
+    <set>
+      <if test="starId != null">
+        star_id = #{starId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.entity.UserStar">
+    update user_star
+    set star_id = #{starId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
