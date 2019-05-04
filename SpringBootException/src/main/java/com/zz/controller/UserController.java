@@ -15,4 +15,14 @@ public class UserController {
 
         throw new UserNotExistException(id);
     }
+    @GetMapping("error2")
+    public void get2() {
+//        try{
+            int a=1/0;
+//        }catch (ArithmeticException e){
+//            System.out.println("异常信息："+e.getMessage());
+//        }
+
+        System.out.println("异常后面的代码***************");
+    }
 }

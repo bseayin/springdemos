@@ -22,4 +22,9 @@ public class ControllerExceptionHandler {
         map.put("message", e.getMessage());
         return map;
     }
+    @ExceptionHandler(ArithmeticException.class)
+    public String handle1(ArithmeticException e) {
+        System.out.println("handle1 500*到了**************");
+        return "/500.html";
+    }
 }
