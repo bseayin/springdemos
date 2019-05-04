@@ -12,6 +12,12 @@ import java.util.Map;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
+    //没有匹配的错误处理方法的时候，就被这个处理
+    @ExceptionHandler(Exception.class)
+    public String handle2(Exception e) {
+        System.out.println("handle2 500*到了**************");
+        return "/500.html";
+    }
    //返回json的错误信息
     @ExceptionHandler(UserNotExistException.class)
     @ResponseBody
@@ -28,4 +34,5 @@ public class ControllerExceptionHandler {
         System.out.println("handle1 500*到了**************");
         return "/500.html";
     }
+
 }

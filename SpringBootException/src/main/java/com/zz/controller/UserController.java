@@ -22,7 +22,23 @@ public class UserController {
 //        }catch (ArithmeticException e){
 //            System.out.println("异常信息："+e.getMessage());
 //        }
-
         System.out.println("异常后面的代码***************");
+    }
+
+
+    @GetMapping("/error3")
+    public void get3() {
+        //定义一个数组，并且初始化
+        int[] a={1,2,3};
+        int b=a[3];
+
+    }
+
+    @GetMapping("/")
+    public void get5() {
+        //定义一个数组，并且初始化
+        int[] a={1,2,3};
+        int b=a[3];
+
     }
 }
