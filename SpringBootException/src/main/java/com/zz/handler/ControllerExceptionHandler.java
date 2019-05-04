@@ -12,7 +12,7 @@ import java.util.Map;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
-
+   //返回json的错误信息
     @ExceptionHandler(UserNotExistException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -22,6 +22,7 @@ public class ControllerExceptionHandler {
         map.put("message", e.getMessage());
         return map;
     }
+    //错误以后，跳转到自己定义的错误页面
     @ExceptionHandler(ArithmeticException.class)
     public String handle1(ArithmeticException e) {
         System.out.println("handle1 500*到了**************");
