@@ -16,5 +16,12 @@ public class ComputerController {
     public Computer getComputer(@PathVariable("id") Long id){
         System.out.println("*******getComputer***"+id);
         return  computerService.selectByPrimaryKey(id);
+    } @GetMapping("/update/{id}/{name}")
+    public Computer updateComputer(@PathVariable("id") Long id,@PathVariable("name") String name){
+        System.out.println("*******getComputer***"+id);
+        Computer computer=new Computer();
+        computer.setId(id);
+        computer.setName(name);
+        return  computerService.updateByPrimaryKeySelective(computer);
     }
 }

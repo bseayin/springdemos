@@ -32,8 +32,9 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Computer record) {
-        return 0;
+    public Computer updateByPrimaryKeySelective(Computer record) {
+        computerMapper.updateByPrimaryKeySelective(record);
+        return computerMapper.selectByPrimaryKey(record.getId());
     }
 
     @Override
