@@ -8,7 +8,7 @@ spring:
           clone-on-start: true
           uri: https://github.com/bseayin/ConfigServerFile
           username: yinyouhai@aliyun.com
-          password: HengYY2012
+          password:
 server:
   port: 12580
 security:
