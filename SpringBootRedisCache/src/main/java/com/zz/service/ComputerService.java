@@ -6,15 +6,15 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
-@CacheConfig(cacheNames = "computer")
+//@CacheConfig(cacheNames = "computer")
 public interface ComputerService {
-    @CacheEvict(key = "#p0", allEntries = true)
+//    @CacheEvict(key = "#p0", allEntries = true)
     int deleteByPrimaryKey(Long id);
 
     int insert(Computer record);
 
     int insertSelective(Computer record);
-    @Cacheable(key = "#p0")
+//    @Cacheable(key = "#p0")
     Computer selectByPrimaryKey(Long id);
     @CachePut(key = "#p0.id")
     Computer updateByPrimaryKeySelective(Computer record);
